@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+	<title>KO Flights Demo</title>
+  </head>
+  <body>
+    <div class="main">
+      <ul class="navbar" data-bind="foreach: steps">
+	    <li data-bind="text: $data, css: {selected: $data == $root.selectedStep()}, click: $root.selectStep"></li>		
+	  </ul> 
+	</div>
+	<div class="action" data-bind="visible: showPersonalDetails">
+	  <form id="personalDetails">
+	  <table>
+	    <tr>
+	      <td>First Name</td>
+	      <td><input type="text" id="fname" class="required input" minlength="2" data-bind="value: personalDetails.firstName" /></td>
+	    </tr>
+        <tr>
+	      <td>Last Name</td>
+	  	  <td><input type="text" id="lname" class="required input" minlength="2" data-bind="value: personalDetails.lastName" /></td>
+		</tr>
+      </table>
+	  </form>
+	</div>
+	<div class="action" data-bind="visible: showSeatSelection">
+	  <table>
+	    <tr>
+		  <td>Where would you like to sit:</td>
+		  <td>
+	        <select class="input" data-bind="options: availableSeats, value: seat, optionsText: 'location'"></select>
+		  </td>	
+	    </tr>
+	  </table>
+	</div>
+	<div class="action" data-bind="visible: showExtras">
+	  <table>
+	    <tr>
+		  <td>Movie:</td>
+		  <td><select class="input" data-bind="options: movies, value: extras.movie, optionsText: 'name'"></select><td>
+		</tr>
+		<tr>
+		  <td>Headset:</td>
+		  <td><select class="input" data-bind="options: headsets, value: extras.headset, optionsText: 'name'"></select><td>
+		</tr>
+		<tr>
+		  <td>At Arrival:</td>
+		  <td><select class="input" data-bind="options: vehicles, value: extras.vehicle, optionsText: 'name'"></select><td>
+		</tr>
+	  </table>
+	</div>
+	<div class="action" data-bind="visible: showSummary">
+	  <table>
+	    <tr>
+		  <th>Personal Details &amp; Seat Selection</th>
+		</tr>
+		<tr>
+		  <td>
+		    <span class="out" data-bind="text: personalDetails.firstName"></span>
+		    <span class="out" data-bind="text: personalDetails.lastName"></span>
+			<span class="out" data-bind="text: seat().location"></span>
+		  </td>
+		</tr>
+	  </table>	
+	  <table>
+	    <tr>
+		  <th colspan="2">Extras (Entertainment &amp; Transport)</th>
+		</tr>
+		<tr>
+		  <td>Movie:</td>
+		  <td><span class="out" data-bind="text: extras.movie().name"></span></td>
+		</tr>
+		<tr>
+		  <td>Headset:</td>
+		  <td><span class="out" data-bind="text: extras.headset().name"></span></td>
+		</tr>
+		<tr>
+		  <td>Car Rental:</td>
+		  <td><span class="out" data-bind="text: extras.vehicle().name"></span></td>
+		</tr>
+	  </table>
+	</div>
+	
+	<div class="footer">
+	  <button class="next" data-bind="enable: showBack, click: stepBack">Back</button>
+	  <button class="next" data-bind="enable: showNext, click: takeNextStep">Next</button>
+	  <button class="next" data-bind="visible: showSend, click: addBooking">Send</button>
+	</div>
+	<div class="notification"> 
+	  <a href="#" id="mailbox">Mailbox (<span data-bind="text: bookings().length"></span>)</a>
+	</div>
+  </body>
+  <link rel="stylesheet" type="text/css" href="css/main.css"></link>
+  <script type="text/javascript" src="js/knockout-2.0.0.js"></script>
+  <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="js/model.js"></script>
+</html>

@@ -1,0 +1,59 @@
+ul.navbar {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  background-color:#98bf21;
+}
+
+ul.navbar li {
+  display:inline;
+  font-weight:bold;
+  color:#FFFFFF;
+  text-align:center;
+  padding:4px;
+  text-transform:uppercase;		  
+}
+
+ul.navbar li.selected {
+  color:green;
+}
+
+a {
+  color:green;
+}
+
+div.main, .action, .footer, .notification {
+  margin-left:auto;
+  margin-right:auto;
+  width:40%;
+}
+
+div.action {
+  background:#F2F2F2;
+  height:200px;
+}
+
+div.action table {
+  padding:4px;
+}
+
+div.notification {
+  text-align:right;
+  font-weight:bold;
+}
+
+select {
+  width:180px;
+}
+
+.input .required {
+  border:1px solid #006;
+  background:#ffc;
+}
+
+button.next {
+  border:1px solid #006;
+  background:#9cf;
+  width: 100px;
+}
+
